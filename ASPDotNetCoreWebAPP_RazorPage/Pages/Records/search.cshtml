@@ -1,0 +1,57 @@
+﻿@page
+@model ASPDotNetCoreWebAPP_RazorPage.Pages.Records.searchModel
+@{
+}
+<form method="POST">
+<div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Name</label>
+    <div class="row mb-6">
+        <input type='text' class="form-control" name="name" value=""/>
+    </div>
+</div>
+<div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Appointment Date</label>
+    <div class="row mb-6">
+        <input type='date' class="form-control" name="appointmentDate" value=""/>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="offset-sm-3 col-sm-3 d-grid">
+        <button type="submit" class="btn btn-primary" >Search</button>
+    </div>
+</div>
+
+<br>
+<h2>Appointments</h2>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Patient name</th>
+            <th>Appointment Date</th>
+            <th>Appointment Status</th>
+            <th>Comments</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.recordInfos)
+        {
+            <tr>
+                <td>@item.id</td>
+                <td>@item.name</td>
+                <td>@item.appointmentDate</td>
+                <td>@item.status</td>
+                <td>@item.adminComment</td>
+                <td>
+                    <a class='btn btn-primary btn-sm' href='/Records/Edit?id=@item.id'>Edit/Cancel</a>
+
+                </td>
+
+            </tr>
+        }
+
+
+    </tbody>
+</table>

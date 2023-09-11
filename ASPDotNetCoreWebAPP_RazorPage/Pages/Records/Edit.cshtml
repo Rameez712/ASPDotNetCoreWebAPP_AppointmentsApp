@@ -1,0 +1,50 @@
+﻿@page
+@model ASPDotNetCoreWebAPP_RazorPage.Pages.Records.EditModel
+@{
+}
+
+<br>
+<h2>Edit Record</h2>
+
+
+<form method="POST">
+    <input type="hidden"  name="id" value="@Model.recordInfo.id"/> 
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Patient name</label>
+        <div class="row mb-3">
+            <input type='text' class="form-control" name="name" value="@Model.recordInfo.name"></input>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Appointment date</label>
+        <div class="row mb-3">
+            <input type="date" class="form-control" name="appointmentDate" value="@Model.recordInfo.appointmentDate">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Appointment Status</label>
+        <div class="row mb-3">
+            <select name="status" value="@Model.recordInfo.status">
+                <option>Active</option>
+                <option>Cancel</option>
+            </select>
+           
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Comments</label>
+        <div class="row mb-3">
+            <input type="text" class="form-control" name="adminComment" value="@Model.recordInfo.adminComment"></input>
+        </div>
+    </div>
+
+
+
+    <div class="row mb-3">
+        <div class="offset-sm-3 col-sm-3 d-grid">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
+    </div>
+
+</form>

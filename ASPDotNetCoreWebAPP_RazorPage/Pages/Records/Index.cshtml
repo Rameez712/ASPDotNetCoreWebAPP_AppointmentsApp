@@ -1,0 +1,39 @@
+﻿@page
+@model ASPDotNetCoreWebAPP_RazorPage.Pages.Records.IndexModel
+@{
+}
+
+<br>
+<h2>Today's Appointments</h2>
+<a class='btn btn-primary btn-sm' href='/Records/Create'>New Appointment</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Patient name</th>
+            <th>Appointment Date</th>
+            <th>Appointment Status</th>
+            <th>Comments</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.recordInfos)
+        {
+            <tr>
+                <td>@item.id</td>
+                <td>@item.name</td>
+                <td>@item.appointmentDate</td>
+                <td>@item.status</td>
+                <td>@item.adminComment</td>
+                <td>
+                    <a class='btn btn-primary btn-sm' href='/Records/Edit?id=@item.id'>Edit/Cancel</a>
+                   
+                </td>
+
+            </tr>
+        }
+
+
+    </tbody>
+</table>
+

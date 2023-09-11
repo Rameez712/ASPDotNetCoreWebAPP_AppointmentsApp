@@ -1,0 +1,40 @@
+﻿@page
+@model ASPDotNetCoreWebAPP_RazorPage.Pages.Records.CreateModel
+@{
+}
+<br>
+<h2>New Client</h2>
+
+
+
+<form method="POST">
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Patient name</label>
+        <div class="row mb-6">
+            <input type='text' class="form-control" name="name" value="@Model.recordInfo.name"></input>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Appointment date</label>
+        <div class="row mb-6">
+            <input type="date" class="form-control" name="appointmentDate" value="@Model.recordInfo.appointmentDate">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Comments</label>
+        <div class="row mb-6">
+            <input ype='text' class="form-control" name="adminComment" value="@Model.recordInfo.adminComment"></input>
+        </div>
+    </div>
+
+
+    <div class="row mb-3">
+        <div class="offset-sm-3 col-sm-3 d-grid">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
+    </div>
+
+</form>
