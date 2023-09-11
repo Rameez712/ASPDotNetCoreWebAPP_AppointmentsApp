@@ -10,12 +10,17 @@ namespace ASPDotNetCoreWebAPP_RazorPage.Pages.Records
         public RecordInfo recordInfo = new RecordInfo();
         public string errorMsg = string.Empty;
         public string successMsg = string.Empty;
+        public readonly string connectionString;
+        public EditModel(IConfiguration configuration)
+        {
+            connectionString = configuration["ConnectionStrings:SqlServerDb"] ?? "";
+        }
         public void OnGet()
         {
             String id = Request.Query["id"];
             try
             {
-                string connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=TestDB;Integrated Security=True";
+              //  string connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=TestDB;Integrated Security=True";
                 using (var connection = new SqlConnection(connectionString))
                 {
                     connection.Open();

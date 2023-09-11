@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
 using System.Data;
+using Microsoft.Extensions.Configuration;
 
 namespace ASPDotNetCoreWebAPP_RazorPage.Pages.Records
 {
@@ -11,17 +12,22 @@ namespace ASPDotNetCoreWebAPP_RazorPage.Pages.Records
         public RecordInfo recordInfo = new RecordInfo();
         public string errorMsg = string.Empty;
         public string successMsg = string.Empty;
-
+        public readonly string connectionString;
+        public searchModel(IConfiguration configuration)
+        {
+            connectionString = configuration["ConnectionStrings:SqlServerDb"] ?? "";
+        }
         public void OnPost()
         {
 
             DataTable dataTable = new DataTable();
             try
             {
+                
                 recordInfo.name = Request.Form["name"];
                 recordInfo.appointmentDate = Request.Form["appointmentDate"];
 
-                string connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=TestDB;Integrated Security=True";
+                //string connectionString ="Data Source=.\\SQLEXPRESS;Initial Catalog=TestDB;Integrated Security=True";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();

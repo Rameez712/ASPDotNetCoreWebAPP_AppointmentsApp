@@ -8,13 +8,18 @@ namespace ASPDotNetCoreWebAPP_RazorPage.Pages.Records
     public class IndexModel : PageModel
     {
         public List<RecordInfo> recordInfos = new List<RecordInfo>();
+        public readonly string connectionString;
+        public IndexModel(IConfiguration configuration)
+        {
+            connectionString = configuration["ConnectionStrings:SqlServerDb"] ?? "";
+        }
         public void OnGet()
         {
              DataTable dataTable = new DataTable();
             try
             {
                
-                string connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=TestDB;Integrated Security=True";
+               // string connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=TestDB;Integrated Security=True";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
@@ -49,7 +54,7 @@ namespace ASPDotNetCoreWebAPP_RazorPage.Pages.Records
 
         }
     }
-
+   
     public class RecordInfo
     {
         public string id;

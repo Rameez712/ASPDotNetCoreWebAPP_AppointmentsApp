@@ -7,6 +7,12 @@ namespace ASPDotNetCoreWebAPP_RazorPage.Pages.Records
 {
     public class CreateModel : PageModel
     {
+        public readonly string connectionString;
+        public CreateModel(IConfiguration configuration)
+        {
+            connectionString = configuration["ConnectionStrings:SqlServerDb"] ?? "";
+        }
+
         public RecordInfo recordInfo = new RecordInfo();
         public string errorMsg = string.Empty;
         public string successMsg = string.Empty;
@@ -37,7 +43,7 @@ namespace ASPDotNetCoreWebAPP_RazorPage.Pages.Records
             //save database
             try
             {
-                string connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=TestDB;Integrated Security=True";
+                //string connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=TestDB;Integrated Security=True";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
