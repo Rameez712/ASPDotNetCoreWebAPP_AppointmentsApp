@@ -20,8 +20,7 @@ namespace ASPDotNetCoreWebAPP_RazorPage.Pages.Records
             String id = Request.Query["id"];
             try
             {
-              //  string connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=TestDB;Integrated Security=True";
-                using (var connection = new SqlConnection(connectionString))
+               using (var connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
                     string sql = "SELECT * FROM Records WHERE id=@id";
@@ -78,7 +77,7 @@ namespace ASPDotNetCoreWebAPP_RazorPage.Pages.Records
             //save database
             try
             {
-                string connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=TestDB;Integrated Security=True";
+                
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();

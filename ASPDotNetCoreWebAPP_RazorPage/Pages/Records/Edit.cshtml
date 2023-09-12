@@ -5,7 +5,14 @@
 
 <br>
 <h2>Edit Record</h2>
-
+@if (Model.errorMsg.Length > 0)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>@Model.errorMsg</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        </button>
+    </div>
+}
 
 <form method="POST">
     <input type="hidden"  name="id" value="@Model.recordInfo.id"/> 
@@ -24,7 +31,7 @@
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Appointment Status</label>
         <div class="row mb-3">
-            <select name="status" value="@Model.recordInfo.status">
+            <select name="status"  value="@Model.recordInfo.status">
                 <option>Active</option>
                 <option>Cancel</option>
             </select>
@@ -38,7 +45,19 @@
         </div>
     </div>
 
+    @if (Model.successMsg.Length > 0)
+    {
+        <div class="row mb-3">
+            <div class="col-sm-9">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>@Model.successMsg</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                    </button>
+                </div>
+            </div>
+        </div>
 
+    }
 
     <div class="row mb-3">
         <div class="offset-sm-3 col-sm-3 d-grid">

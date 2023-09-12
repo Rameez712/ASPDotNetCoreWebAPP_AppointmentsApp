@@ -61,7 +61,8 @@ namespace ASPDotNetCoreWebAPP_RazorPage.Pages.Records
                                 recordInfo.id = "" + reader.GetInt32(0);
                                 recordInfo.name = reader.GetString(1);
                                 recordInfo.appointmentDate = reader.GetString(2);
-                                recordInfo.adminComment = reader.GetString(3);
+                                recordInfo.status = reader.GetString(3);
+                                recordInfo.adminComment = reader.GetString(4);
                                 recordInfos.Add(recordInfo);
 
                             }
